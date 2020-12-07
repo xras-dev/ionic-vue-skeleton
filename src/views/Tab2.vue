@@ -12,17 +12,24 @@
         </ion-toolbar>
       </ion-header>
       
-      <ExploreContainer name="Tab 2 page" />
+      {{ count }}
+    <ion-button @click="doAddCount">Incrementar</ion-button>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
-
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
+import {mapState} from 'vuex';
+import {mapActions} from 'vuex';
 export default  {
   name: 'Tab2',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton },
+  computed:{
+    ...mapState(['count']),
+  },
+  methods:{
+    ...mapActions(['doAddCount']),
+  }
 }
 </script>
